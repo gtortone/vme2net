@@ -1,0 +1,6 @@
+AC_INIT(vme2net.cpp)
+AM_INIT_AUTOMAKE(vme2net, 1.0)
+AC_PROG_CXX
+${CXXFLAGS="-O2"}
+AC_PROG_CC
+AC_OUTPUT(Makefile)

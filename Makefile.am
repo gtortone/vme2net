@@ -1,0 +1,11 @@
+bin_PROGRAMS = vme2net sendvme handle_trg
+vme2net_SOURCES = vme2net.cpp
+vme2net_LDFLAGS = -L/usr/local/lib -lzmq -L/usr/lib -lCAENVME -lboost_program_options
+#readvme_SOURCES = readvme.cpp
+#readvme_LDFLAGS = -L/usr/local/lib -lzmq -L/usr/lib -lCAENVME
+#writevme_SOURCES = writevme.cpp
+#writevme_LDFLAGS = -L/usr/local/lib -lzmq -L/usr/lib -lCAENVME
+sendvme_SOURCES = sendvme.cpp
+sendvme_LDFLAGS = -L/usr/local/lib -lzmq -L/usr/lib -lCAENVME
+handle_trg_SOURCES = handle_trg.cpp
+handle_trg_LDFLAGS = -L/usr/local/lib -L/usr/lib -lCAENVME 
