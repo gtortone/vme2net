@@ -76,7 +76,7 @@ int main(int argc, char *argv[]) {
 
       std::cout << "VME board V2818 opened successfully !" << std::endl;
 
-      CAENVME_SystemReset(BHandle);
+      // CAENVME_SystemReset(BHandle);
    }
 
    request_t req;
