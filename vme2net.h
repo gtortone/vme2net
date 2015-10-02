@@ -11,7 +11,7 @@ typedef enum { NONE = 0, LOW_PARAM, HIGH_PARAM, OP_ERR, AM_ERR, DW_ERR, SEQ_ERR 
 
 char const* const ProtErrorCodes_str[] = { "NONE", "missing parameters", "too many parameters", "opcode error", "address modifier error", "data width error" , "sequence error" };
 
-// REQUEST:  vmeaccess_t op = WRITE | unsigned char seqnum | uint32_t address | uint32_t data | CVAddressModifier am | CVDataWidth dw
+// REQUEST:  vmeaccess_t op = WRITE | unsigned char seqnum | uint32_t address | uint16_t data | CVAddressModifier am | CVDataWidth dw
 // REQUEST:  vmeaccess_t op = READ  | unsigned char seqnum | uint32_t address | CVAddressModifier am | CVDataWidth dw
 
 struct _req {
@@ -19,7 +19,7 @@ struct _req {
    vmeaccess_t op;
    unsigned int seqnum;
    uint32_t address;
-   uint32_t data;
+   uint16_t data;
    CVAddressModifier am;
    CVDataWidth dw;
 
@@ -27,14 +27,14 @@ struct _req {
 };
 
 // REPLY:    vmeaccess_t op = WRITE | unsigned char seqnum | CVErrorCodes verr 
-// REPLY:    vmeaccess_t op = READ  | unsigned char seqnum | CVErrorCodes verr | uint32_t data 
+// REPLY:    vmeaccess_t op = READ  | unsigned char seqnum | CVErrorCodes verr | uint16_t data 
 
 struct _res {
 
    vmeaccess_t op;
    unsigned int seqnum;
    CVErrorCodes verr;
-   uint32_t data;
+   uint16_t data;
 
    ProtErrorCodes perr;
 };
@@ -93,7 +93,7 @@ request_t deserialize_req(std::string string_req) {
    vmeaccess_t op;
    unsigned int seqnum;
    uint32_t address;
-   uint32_t data;
+   uint16_t data;
    CVAddressModifier am;
    CVDataWidth dw;
 
@@ -198,7 +198,7 @@ response_t deserialize_res(std::string string_res) {
    unsigned int seqnum;
    ProtErrorCodes perr;
    CVErrorCodes verr;
-   uint32_t data;
+   uint16_t data;
 
    if((validate_param((vmeaccess_t) string_res[0]) != NONE)) {
 
